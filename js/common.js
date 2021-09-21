@@ -1,4 +1,4 @@
-var baseUrl = "askforsign/";
+var baseUrl = "/";
 
 function goToShake(){
     window.location.href = baseUrl+"shake.html";
