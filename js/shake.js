@@ -24,7 +24,7 @@ function testPermission() {
                     // alert('Permission is needed. Please click the authorize button.')
                 }
             }).catch((err) => {
-                alert('Permission is needed. Please click the authorize button and click permit.')
+                // alert('Permission is needed. Please click the authorize button and click permit.')
             });
         } else {
             alert("Your iOS version is too old. iOS 13+ is needed.")
