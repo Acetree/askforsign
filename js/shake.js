@@ -112,7 +112,7 @@ function ios13granted() {
 
 function startListen() {
     if (window.DeviceMotionEvent) {
-      window.addEventListener("devicemotion", handleMotionEvent, false);
+      window.addEventListener("devicemotion", deviceMotionHandler, false);
     } else {
       alert("该浏览器不支持摇一摇功能");
     }
