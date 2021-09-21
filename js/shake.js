@@ -19,6 +19,7 @@ function testPermission() {
             DeviceMotionEvent.requestPermission().then(permissionState => {
                 if (permissionState === 'granted') {
                     shake() //摇一摇
+                    $('#btn_get_permission').hide();
                 } else if (permissionState === 'denied') {
                     
                     alert('Permission is needed. Please click the Authorize button.')
