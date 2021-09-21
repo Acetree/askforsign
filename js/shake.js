@@ -14,7 +14,7 @@ function testPermission() {
         var verinfo = ua.match(reg);
         var version = (verinfo + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, ".");
         var arr = version.split(".");
-        alert(arr[0] + "." + arr[1] + "." + arr[2])
+        // alert(arr[0] + "." + arr[1] + "." + arr[2])
         if (arr[0] > 12) {
             DeviceMotionEvent.requestPermission().then(permissionState => {
                 if (permissionState === 'granted') {
