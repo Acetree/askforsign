@@ -1,7 +1,7 @@
 "use strict";
 
 $(function () {
-    $("#btn_get_permission").hide()
+   
     testPermission()
     // shake()
     // iosGrantedTips()
@@ -20,11 +20,11 @@ function testPermission() {
                 if (permissionState === 'granted') {
                     shake() //摇一摇
                 } else if (permissionState === 'denied') {
-                    popUpAuthorize();
-                    // alert('Permission is needed. Please click the authorize button.')
+                    
+                    alert('Permission is needed. Please click the Authorize button.')
                 }
             }).catch((err) => {
-                // alert('Permission is needed. Please click the authorize button and click permit.')
+                alert('Permission is needed. Please click the Authorize button to permit.')
             });
         } else {
             alert("Your iOS version is too old. iOS 13+ is needed.")
@@ -32,9 +32,7 @@ function testPermission() {
     }
 }
 
-function popUpAuthorize() {
-    $("#btn_get_permission").show()
-}
+
 
 function shake() {
     if (window.DeviceMotionEvent) {
