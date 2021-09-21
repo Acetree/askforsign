@@ -44,7 +44,7 @@ function shake() {
     }
 }
 
-var SHAKE_THRESHOLD = 800;
+var SHAKE_THRESHOLD = 500;
 var last_update = 0;
 var x, y, z, last_x = 0, last_y = 0, last_z = 0;
 
