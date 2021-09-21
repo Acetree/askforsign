@@ -1,9 +1,40 @@
 "use strict";
 
 $(function () {
-    shake()
-    iosGrantedTips()
+    $("#btn_get_permission").hide()
+    testPermission()
+    // shake()
+    // iosGrantedTips()
 })
+
+function testPermission() {
+    var ua = navigator.userAgent.toLowerCase();
+    if (ua.indexOf("like mac os x") > 0) {
+        var reg = /os [\d._]*/gi;
+        var verinfo = ua.match(reg);
+        var version = (verinfo + "").replace(/[^0-9|_.]/ig, "").replace(/_/ig, ".");
+        var arr = version.split(".");
+        alert(arr[0] + "." + arr[1] + "." + arr[2])
+        if (arr[0] > 12) {
+            DeviceMotionEvent.requestPermission().then(permissionState => {
+                if (permissionState === 'granted') {
+                    shake() //摇一摇
+                } else if (permissionState === 'denied') {
+                    popUpAuthorize();
+                    alert('Permission is needed. Please click the authorize button.')
+                }
+            }).catch((err) => {
+                alert('Permission is needed. Please click the authorize button and click permit.')
+            });
+        } else {
+            alert("Your iOS version is too old. iOS 13+ is needed.")
+        }
+    }
+}
+
+function popUpAuthorize() {
+    $("#btn_get_permission").show()
+}
 
 function shake() {
     if (window.DeviceMotionEvent) {
@@ -13,7 +44,7 @@ function shake() {
     }
 }
 
-var SHAKE_THRESHOLD = 500;
+var SHAKE_THRESHOLD = 800;
 var last_update = 0;
 var x, y, z, last_x = 0, last_y = 0, last_z = 0;
 
@@ -46,9 +77,9 @@ function iosGrantedTips() {
         alert(arr[0] + "." + arr[1] + "." + arr[2])
         if (arr[0] > 12) {
             DeviceMotionEvent.requestPermission().then(permissionState => {
-                if (permissionState === 'granted') { 
+                if (permissionState === 'granted') {
                     shake() //摇一摇
-                } else if (permissionState === 'denied') { 
+                } else if (permissionState === 'denied') {
                     // ios13granted();
                     alert('Permission is needed. Please click the authorize button.')
                 }
