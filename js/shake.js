@@ -21,7 +21,7 @@ function testPermission() {
                     shake() //摇一摇
                 } else if (permissionState === 'denied') {
                     popUpAuthorize();
-                    alert('Permission is needed. Please click the authorize button.')
+                    // alert('Permission is needed. Please click the authorize button.')
                 }
             }).catch((err) => {
                 alert('Permission is needed. Please click the authorize button and click permit.')
