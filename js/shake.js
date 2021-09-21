@@ -56,29 +56,29 @@ function iosGrantedTips() {
                 alert('Permission is needed. Please click the authorize button and click permit.')
             });
         } else {
-            alert("Your iOS version is too old. iOS 13 is needed.")
+            alert("Your iOS version is too old. iOS 13+ is needed.")
         }
     }
 }
 
-// function getPermission() {
-//     if (
-//         typeof window.DeviceMotionEvent !== 'undefined' &&
-//         typeof window.DeviceMotionEvent.requestPermission === 'function'
-//     ) {
-//         window.DeviceMotionEvent.requestPermission()
-//             .then(function (state) {
-//                 if ('granted' === state) {
-//                     shake()
-//                 } else {
-//                     alert('Permission is needed. Please click the authorize button.')
-//                 }
-//             })
-//             .catch(function (err) {
-//                 alert('error: ' + err)
-//             })
-//     }
-// }
+function getPermission() {
+    if (
+        typeof window.DeviceMotionEvent !== 'undefined' &&
+        typeof window.DeviceMotionEvent.requestPermission === 'function'
+    ) {
+        window.DeviceMotionEvent.requestPermission()
+            .then(function (state) {
+                if ('granted' === state) {
+                    shake()
+                } else {
+                    alert('Permission is needed. Please click the authorize button.')
+                }
+            })
+            .catch(function (err) {
+                alert('error: ' + err)
+            })
+    }
+}
 
 // function ios13granted() {
 //     if (typeof DeviceMotionEvent.requestPermission === 'function') {
