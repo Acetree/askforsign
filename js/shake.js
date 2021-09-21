@@ -17,7 +17,7 @@ function shake(){
 //获取加速度信息
 //通过监听上一步获取到的x, y, z 值在一定时间范围内的变化率，进行设备是否有进行晃动的判断。
 //而为了防止正常移动的误判，需要给该变化率设置一个合适的临界值。
-var SHAKE_THRESHOLD = 500;
+var SHAKE_THRESHOLD = 200;
 var last_update = 0;
 var x, y, z, last_x = 0, last_y = 0, last_z = 0;
 
@@ -32,8 +32,7 @@ function deviceMotionHandler(eventData) {
         z = acceleration.z;
         var speed = Math.abs(x +y + z - last_x - last_y - last_z) / diffTime * 10000;
         if (speed > SHAKE_THRESHOLD) {
-            
-            changPic();
+            alert('shaked');
         }
         last_x = x;
         last_y = y;
@@ -109,3 +108,12 @@ function ios13granted() {
         alert("处理常规的非iOS 13+设备")
     }
 }
+
+
+function startListen() {
+    if (window.DeviceMotionEvent) {
+      window.addEventListener("devicemotion", handleMotionEvent, false);
+    } else {
+      alert("该浏览器不支持摇一摇功能");
+    }
+  }
